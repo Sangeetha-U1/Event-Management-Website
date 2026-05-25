@@ -120,3 +120,46 @@
     });
 
 })(jQuery);
+// ===== Ticket Booking Form =====
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.querySelector("form");
+
+    // run only if form exists on page
+    if (form) {
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.querySelector('input[placeholder="Full Name"]').value;
+            const email = document.querySelector('input[placeholder="Email Address"]').value;
+            const phone = document.querySelector('input[placeholder="Phone Number"]').value;
+            const ticket = document.querySelector("select").value;
+            const quantity = document.querySelector('input[placeholder="Number of Tickets"]').value;
+
+            // validation
+            if (!name || !email || !phone || !ticket || !quantity) {
+                alert("⚠️ Please fill all fields!");
+                return;
+            }
+
+            if (quantity <= 0) {
+                alert("⚠️ Quantity must be at least 1");
+                return;
+            }
+
+            // success message
+            alert(
+                "🎉 Booking Successful!\n\n" +
+                "Name: " + name + "\n" +
+                "Ticket: " + ticket + "\n" +
+                "Quantity: " + quantity
+            );
+
+            form.reset();
+        });
+
+    }
+
+});
